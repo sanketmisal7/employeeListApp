@@ -8,6 +8,8 @@ Installing MongoDb
 - Use 'mongod' command to start the server.
 - Open another command prompt to the same path and use command "mongo" to start the mongodb terminal
 - After it starts, create a collection named "employeelist"
+
+
 Launching the application
 - Clone the Repository
 - Run 'npm i' in the project repository to download local dependencies for the project
