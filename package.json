@@ -1,0 +1,27 @@
+{
+  "name": "employeelistapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "angular-route": "^1.7.8",
+    "body-parser": "^1.19.0",
+    "chart.js": "^2.9.2",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "mongojs": "^3.1.0",
+    "package-lock.json": "^1.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "EmployeeApp"
+  },
+  "author": "Sanket Misal",
+  "license": "ISC"
+}

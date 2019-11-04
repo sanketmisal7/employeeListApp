@@ -1,0 +1,107 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+    <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+            <script type="text/javascript">
+                setInterval("displayChart();",10000); 
+              </script>
+        <title>
+            Employee List App
+        </title>
+    </head>
+    <body>
+        <div class="container" ng-app="myApp" ng-controller="AppCtrl">
+            <h1>Employee List App</h1>
+            <table class="table" ng-controller="AppCtrl">
+                <thead>
+                    <tr>
+                        <th> Name   </th>
+                        <th> Email   </th>
+                        <th> Age  </th>
+                        <th> Action</th>
+                        <th> &nbsp;</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <td><input class="form-control" ng-model="employee.name"></td>
+                        <td><input class="form-control" type="email" ng-model="employee.email"></td>
+                        <td><input class="form-control" type="number" ng-model="employee.age"></td>
+                        <td><button class="btn btn-primary" ng-click="addEmployee()">Add Employee</button></button></td>
+                        <td><button class="btn btn-info" ng-click="update()">Update</button> &nbsp; &nbsp; <button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+                    </tr>
+                    <tr ng-repeat="employee in employeeList">
+                        <td> {{employee.name}} </td>
+                        <td> {{employee.email}} </td>
+                        <td> {{employee.age}} </td>
+                        <td><button class="btn btn-danger" ng-click="remove(employee._id)">Remove</button></td>
+                        <td><button class="btn btn-warning" ng-click="edit(employee)">Edit</button></td>
+                    </tr>
+                </tbody>  
+            </table>
+        </div>
+        <div id="chart">
+            <canvas id="myChart"></canvas>
+            <ul id="data"></ul>
+        <div id="display">
+        <script type="text/javascript">
+        
+         async function displayChart() {
+            let myChart = document.getElementById('myChart').getContext('2d');
+            try {
+            const response = await fetch('/employeeList');
+            try {
+            const myJson = await response.json();
+           // console.log(JSON.stringify(myJson));
+           let lessThan25 = 0;
+           let between25To35 = 0;
+           let greaterThan35 = 0;
+            for (j in myJson) {
+                var age = myJson[j].age;
+                if(parseInt(age) < 25) {
+                    lessThan25 = lessThan25 + 1;
+                }
+                if(parseInt(age) >= 25 && parseInt(age) <=35){
+                    between25To35 = between25To35 + 1;
+                }
+                if(parseInt(age) >35){
+                    greaterThan35 = greaterThan35 + 1;
+                }
+            }
+            let barChart = new Chart(myChart, {
+                type: 'bar',
+                data: {
+                    labels: ['<25', '25-35', '>35'],
+                    datasets: [{
+                        label: 'Number of Employees',
+                        data: [
+                             lessThan25,
+                             between25To35,
+                             greaterThan35,
+                             
+                        ]
+                    }],
+                },
+                object: {},
+            });
+        } catch(e){
+            console.log(e);
+        }
+        }
+        catch(e) {
+            console.log(e);
+        }
+
+        }
+        displayChart();
+        </script>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+  
+    <script src="Controllers/controller.js"></script>
+    </body>
+</html>
