@@ -14,6 +14,7 @@ Launching the application
 - Clone the Repository
 - Run 'npm i' in the project repository to download local dependencies for the project
 - Run 'node server' to launch the application
+- You should now be able to use your application on http://localhost:3000/ 
 
 Use
 - You can Add, Remove, Edit, Update Employee records such as Employee name, Employee email and Employee age.
