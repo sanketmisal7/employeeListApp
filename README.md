@@ -1,5 +1,5 @@
 # Employee List Application
-This application is built for listing the employee data such as Name, Email and Age. It shows the live bar chart for No. of Employees within a Date Range. Application uses MongoDb as the database and has various API calls. Application is built using Express JS, Node JS, Angular JS and MongoDb. For the live chart utilization chart.js is used
+This application is built for listing the employee data such as Name, Email and Age. It shows the live bar chart for No. of Employees you have within a Date Range. Application uses MongoDb as the database and has various API calls. Application is built using Express JS, Node JS, Angular JS and MongoDb. For the live chart utilization chart.js is used
 
 # Usage
 Installing MongoDb
@@ -14,3 +14,8 @@ Launching the application
 - Clone the Repository
 - Run 'npm i' in the project repository to download local dependencies for the project
 - Run 'node server' to launch the application
+
+Use
+- You can Add, Remove, Edit, Update Employee records such as Employee name, Employee email and Employee age.
+- After each operation you will see live bar chart being updated for the employee age range.
+- Bar chart displays the number of employees you have within the specific date range.  
